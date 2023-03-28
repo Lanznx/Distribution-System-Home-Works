@@ -11,6 +11,9 @@ const client = require('node-fetch');
   const resp = await client('http://localhost:3000/hogRider', {
     method: 'POST',
     body: JSON.stringify(body),
+    headers: {
+      'Content-Type': 'application/json'
+    }
   });
 
   const data = await resp.json();

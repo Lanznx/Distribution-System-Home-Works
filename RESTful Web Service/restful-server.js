@@ -30,7 +30,9 @@ server.get('/hogRider/:name', function (req, res) {
 });
 
 server.post('/hogRider', function (req, res) {
-    // 請依Lab說明寫作
+    const hogRider = JSON.parse(req.body);
+    hogRiders.push(hogRider);
+    return hogRiders.length;
 });
 
 server.put('/hogRider/:name', function (req, res) {

@@ -36,7 +36,14 @@ server.post('/hogRider', function (req, res) {
 });
 
 server.put('/hogRider/:name', function (req, res) {
-    // 請依Lab說明寫作
+    const name = req.params.name;
+    const newRiderInfo = JSON.parse(req.body);
+    let result = hogRiders.find(hogRider => hogRider.name === name);
+    if(!result) {
+        return {error: "Not found"};
+    }
+    Object.assign(result, newRiderInfo);
+    return result;
 });
 
 

@@ -30,9 +30,9 @@ server.get('/hogRider/:name', function (req, res) {
 });
 
 server.post('/hogRider', function (req, res) {
-    const hogRider = JSON.parse(req.body);
-    hogRiders.push(hogRider);
-    return hogRiders.length;
+    const newRider = JSON.parse(req.body);
+    hogRiders.push(newRider);
+    return {count: hogRiders.length};
 });
 
 server.put('/hogRider/:name', function (req, res) {

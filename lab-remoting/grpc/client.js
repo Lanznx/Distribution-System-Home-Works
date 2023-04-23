@@ -14,16 +14,20 @@ var packageDefinition = protoLoader.loadSync(
 var hello_proto = grpc.loadPackageDefinition(packageDefinition).helloworld;
 
 function main() {
-    var client = new hello_proto.Greeter('localhost:50051',
+    var client = new hello_proto.Greeter('localhost:50057',
         grpc.credentials.createInsecure());
 
-    client.sayHello({name: 'Tom'}, function (err, response) {
+    client.sayHello({ name: 'Tom' }, function (err, response) {
         console.log('Greeting Response:', response.message);
     });
 
+    client.add({ x: 3, y: 2 }, function (err, response) {
+        console.log(`x + y = ${response.result}`);
+    });
+
     // step 5-(2): client.add({x: 3, y: 2}, function (err, response) {...
-	//                                      });
-	// note that you should use response.result to get the outcome
+    //                                      });
+    // note that you should use response.result to get the outcome
 }
 
 main();

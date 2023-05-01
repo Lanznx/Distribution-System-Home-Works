@@ -13,7 +13,6 @@ client.on('message', function (topic, message) {
 
     if(message.toString() == item){
         eventSeq.shift();
-        item = eventSeq[0];
     }
     if(eventSeq.length == 0){
         client.publish('EVENT', 'LEAVE');
